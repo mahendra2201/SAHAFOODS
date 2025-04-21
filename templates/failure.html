@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Failed - Saha Foods</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #f39c12;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --success-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .transaction-page {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .transaction-message {
+            padding: 2rem;
+        }
+        
+        .transaction-message h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .transaction-message h1:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .transaction-message p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .error-details {
+            background: #fef2f2;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            border-radius: 4px;
+        }
+        
+        .error-details p {
+            color: #b91c1c;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .btn.primary {
+            background: var(--dark-color);
+            color: white;
+            border: 2px solid var(--dark-color);
+        }
+        
+        .btn.primary:hover {
+            background: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn.secondary {
+            background: white;
+            color: var(--dark-color);
+            border: 2px solid var(--dark-color);
+        }
+        
+        .btn.secondary:hover {
+            background: var(--light-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .support-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .support-section p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .support-email {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .transaction-page {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .transaction-message {
+                padding: 1rem 0;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Welcome, {{ name }}</h1>
+    </header>
+    
+    <main class="transaction-page">
+        <div class="transaction-message">
+            <h1>Transaction Failed</h1>
+            <p>We're sorry, but your payment could not be processed at this time. Please try again later or contact our support team for assistance.</p>
+            
+            {% if error %}
+            <div class="error-details">
+                <p><strong>Reason:</strong> {{ error }}</p>
+            </div>
+            {% endif %}
+            
+            <div class="button-container">
+                <a href="/userhome?username={{ name }}" class="btn primary">Go to Home</a>
+                <a href="/cartpage?username={{ name }}" class="btn secondary">View Cart</a>
+            </div>
+            
+            <div class="support-section">
+                <p>Need immediate help?</p>
+                <a href="mailto:support@sahafoods.com" class="support-email">support@sahafoods.com</a>
+                <p>or call us at +91 9876543210</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

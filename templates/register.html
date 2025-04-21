@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Saha Foods</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+</head>
+<body>
+    <!-- Particles background container -->
+    <div class="particles"></div>
+
+    <!-- Main Heading -->
+    <header>
+        <h1>Welcome to Saha Foods</h1>
+        <div class="header-decoration"></div>
+    </header>
+
+    <!-- Navigation Links -->
+    <nav>
+        <a href="/aboutus">
+            <i class="fas fa-info-circle"></i> About Us
+        </a>
+        <a href="/contactus">
+            <i class="fas fa-envelope"></i> Contact Us
+        </a>
+        <a href="/policies">
+            <i class="fas fa-file-alt"></i> Our Policies
+        </a>
+        <a href="/FAQS">
+            <i class="fas fa-question-circle"></i> FAQs
+        </a>
+    </nav>
+
+    <!-- Register Section -->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Create Your Account</h2>
+                <p class="text-center">Join our food community today</p>
+            </div>
+
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="name">
+                        <i class="fas fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-username">
+                        <i class="fas fa-at"></i> Username
+                    </label>
+                    <input type="text" id="register-username" name="username" placeholder="Choose a username" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">
+                        <i class="fas fa-phone"></i> Mobile
+                    </label>
+                    <input type="text" id="mobile" name="mobile" placeholder="Enter mobile number" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">
+                        <i class="fas fa-lock"></i> Confirm Password
+                    </label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                    <div class="input-decoration"></div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <span class="btn-text">Register Now</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </form>
+
+            <div class="social-login">
+                <p class="divider"><span>or register with</span></p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon google">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="#" class="social-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <p class="mt-3 text-center">Already have an account? <a href="/login" class="login-link">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Particle animation script
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.querySelector('.particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                // Random properties
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                const opacity = Math.random() * 0.5 + 0.1;
+
+                // Apply styles
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.bottom = `-10px`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = opacity;
+
+                particlesContainer.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>

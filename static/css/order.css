@@ -1,0 +1,181 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Header Styles */
+.order-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+    padding: 8px 15px !important;
+    border-radius: 20px;
+}
+
+.nav-link:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-link i {
+    margin-right: 8px;
+}
+
+/* Main Content Styles */
+.order-main {
+    padding: 2rem 0;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 1s both;
+}
+
+.welcome-message h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.welcome-message i {
+    color: #2575fc;
+}
+
+/* Day Table Styles */
+.day-table {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+.day-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.day-header i {
+    margin-right: 10px;
+}
+
+/* Table Styles */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table thead {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.order-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+.order-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.order-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.order-table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.005);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.total-row {
+    background-color: #f8f9fa !important;
+    font-weight: bold;
+}
+
+.total-row td {
+    border-top: 2px solid #ddd;
+}
+
+/* No Orders Styles */
+.no-orders {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    animation: fadeIn 1s both;
+}
+
+.no-orders i {
+    font-size: 3rem;
+    color: #6a11cb;
+    margin-bottom: 1rem;
+}
+
+.no-orders h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.no-orders p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+}
+
+/* Footer Styles */
+.order-footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

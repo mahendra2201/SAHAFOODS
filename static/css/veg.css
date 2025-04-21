@@ -1,0 +1,527 @@
+/* Import Google Font and Icons */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-size: 300px;
+    background-blend-mode: overlay;
+    background-color: rgba(248, 249, 250, 0.9);
+}
+
+/* Leaf Pattern Background for Sections */
+.section-bg {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23a8e6cf" fill-opacity="0.1" d="M92.5,38.5c-5-10-15-15-25-15c-10,0-20,5-25,15c-5-10-15-15-25-15c-10,0-20,5-25,15c0,10,5,20,15,25c10,5,20,5,25-5c5,10,15,10,25,5c10-5,15-15,15-25C97.5,48.5,95.5,43.5,92.5,38.5z"/></svg>');
+    background-repeat: repeat;
+}
+
+/* Header Section */
+header {
+    background: linear-gradient(135deg, #a8e6cf, #4caf50);
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ffffff" fill-opacity="0.1" d="M50,10c0,0-15,20-15,35s15,35,15,35s15-15,15-35S50,10,50,10z"/></svg>');
+    background-size: 100px;
+    opacity: 0.3;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    position: relative;
+}
+
+header h1::before {
+    content: "\f06c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 35px;
+}
+
+.nav-link::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav-link.home::before { content: "\f015"; }
+.nav-link.shop::before { content: "\f06c"; }
+.nav-link.about::before { content: "\f05a"; }
+.nav-link.contact::before { content: "\f1d8"; }
+.nav-link.cart::before { content: "\f07a"; }
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #4caf50;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+main h1::after {
+    content: "\f06c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-left: 15px;
+    color: #a8e6cf;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #a8e6cf, #4caf50);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-body {
+    text-align: center;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1.25rem;
+    color: #81c784;
+    margin-bottom: 15px;
+}
+
+/* Plant Features Icons */
+.plant-features {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.plant-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #5a6a62;
+}
+
+.plant-feature i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #4caf50;
+}
+
+/* Quantity Input */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.quantity-btn {
+    background-color: #e0e0e0;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: #4caf50;
+    color: white;
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 5px;
+    margin: 0 10px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Add to Cart Button */
+.btn-success {
+    background-color: #4caf50;
+    border: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-success::after {
+    content: "\f07a";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+    padding-right: 40px;
+}
+
+.btn-success:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+/* Added to Cart Button Style */
+.added-to-cart {
+    background-color: #2e7d32 !important;
+    cursor: not-allowed;
+}
+
+.added-to-cart::after {
+    content: "\f00c" !important;
+    opacity: 1 !important;
+    right: 15px !important;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, #a8e6cf, transparent);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px);
+    color: #a8e6cf;
+}
+
+footer a {
+    color: #a8e6cf;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffcc80;
+}
+
+/* Custom Alert Styling */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background-color: #8a4fff;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-out;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    display: flex;
+    align-items: center;
+}
+
+.custom-alert::before {
+    content: "\f06c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Watering Can Decoration */
+.decoration {
+    position: absolute;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.decoration.watering-can {
+    right: 10%;
+    top: 20%;
+    font-size: 10rem;
+    transform: rotate(-20deg);
+    color: #4caf50;
+}
+
+/* Responsive Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+    position: relative;
+}
+
+.col {
+    padding: 10px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 576px) {
+    .col {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+    
+    .nav {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .col {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    
+    .decoration.watering-can {
+        opacity: 0.2;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    .nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    main h1 {
+        font-size: 2rem;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+
+    main h1 {
+        font-size: 1.75rem;
+    }
+
+    .card-img-top {
+        height: 120px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .btn-success {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+/* Special Offer Badge */
+.special-offer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+    animation: pulse 2s infinite;
+}
+
+.special-offer::before {
+    content: "\f06b";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

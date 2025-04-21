@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Admin Navigation Links -->
+        <main class="admin-main">
+            <div class="dashboard-grid">
+                <!-- Dashboard Button -->
+                <a href="/admin_dashboard" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Overview and analytics</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Orders Button -->
+                <a href="/totalorders" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Total Orders</h3>
+                    <p>View and manage orders</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Users Button -->
+                <a href="#" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>User Management</h3>
+                    <p>Manage all users</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+
+                <!-- Settings Button -->
+                <a href="#" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Settings</h3>
+                    <p>System configuration</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Logout Button -->
+                <a href="/logout" class="dashboard-card card-animation logout-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                    <h3>Logout</h3>
+                    <p>Exit admin panel</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </main>
+
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i class="fas fa-utensils"></i> Restaurant Menu Dashboard</h1>
+                <p>Complete overview of our menu offerings</p>
+            </div>
+            <div class="header-graphic">
+                <img src="{{ url_for('static', filename='images/menu_banner.jpg') }}" alt="Menu Banner">
+            </div>
+        </header>
+
+        <!-- Summary Cards Section -->
+        <section class="summary-section">
+            <h2><i class="fas fa-chart-bar"></i> Menu Summary</h2>
+            <div class="summary-cards">
+                <div class="summary-card total">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Total Items</h3>
+                        <p>{{ total_items }}</p>
+                    </div>
+                </div>
+                
+                <div class="summary-card veg">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Vegetarian</h3>
+                        <p>{{ veg_count }}</p>
+                    </div>
+                </div>
+                
+                <div class="summary-card non-veg">
+                    <div class="card-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Non-Vegetarian</h3>
+                        <p>{{ non_veg_count }}</p>
+                    </div>
+                </div>
+                
+                <div class="summary-card drinks">
+                    <div class="card-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Drinks & Desserts</h3>
+                        <p>{{ drinks_icecreams_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Items Tables -->
+        <section class="menu-tables">
+            <!-- Vegetarian Items Table -->
+            <div class="menu-table-container">
+                <div class="table-header veg-header">
+                    <h3><i class="fas fa-seedling"></i> Vegetarian Items ({{ veg_count }})</h3>
+                </div>
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-image"></i> Image</th>
+                            <th><i class="fas fa-pizza-slice"></i> Item Name</th>
+                            <th><i class="fas fa-tag"></i> Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in veg_items %}
+                        <tr>
+                            <td><img src="{{ item.image_url }}" alt="{{ item.name }}" class="item-image"></td>
+                            <td>{{ item.name }}</td>
+                            <td class="price"><i class="fas fa-rupee-sign"></i> {{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Non-Vegetarian Items Table -->
+            <div class="menu-table-container">
+                <div class="table-header non-veg-header">
+                    <h3><i class="fas fa-drumstick-bite"></i> Non-Vegetarian Items ({{ non_veg_count }})</h3>
+                </div>
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-image"></i> Image</th>
+                            <th><i class="fas fa-hamburger"></i> Item Name</th>
+                            <th><i class="fas fa-tag"></i> Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in non_veg_items %}
+                        <tr>
+                            <td><img src="{{ item.image_url }}" alt="{{ item.name }}" class="item-image"></td>
+                            <td>{{ item.name }}</td>
+                            <td class="price"><i class="fas fa-rupee-sign"></i> {{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Drinks & Ice Creams Table -->
+            <div class="menu-table-container">
+                <div class="table-header drinks-header">
+                    <h3><i class="fas fa-cocktail"></i> Drinks & Ice Creams ({{ drinks_icecreams_count }})</h3>
+                </div>
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-image"></i> Image</th>
+                            <th><i class="fas fa-ice-cream"></i> Item Name</th>
+                            <th><i class="fas fa-tag"></i> Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in drinks_icecreams_items %}
+                        <tr>
+                            <td><img src="{{ item.image_url }}" alt="{{ item.name }}" class="item-image"></td>
+                            <td>{{ item.name }}</td>
+                            <td class="price"><i class="fas fa-rupee-sign"></i> {{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

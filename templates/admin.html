@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <div class="header-content">
+                <h1><i class="fas fa-user-shield animated-icon"></i> Welcome, {{username}} <i class="fas fa-crown admin-icon"></i></h1>
+                <p class="admin-greeting"><i class="fas fa-spinner fa-spin"></i> Manage your platform efficiently</p>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <div class="dashboard-grid">
+                <!-- Dashboard Button -->
+                <a href="/admin_dashboard" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Overview and analytics</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Orders Button -->
+                <a href="/totalorders" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Total Orders</h3>
+                    <p>View and manage orders</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+
+                <!-- Products Button -->
+                <a href="/products" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h3>Products</h3>
+                    <p>Manage inventory</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                 <!-- Users Button -->
+                 <a href="#" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>User Management</h3>
+                    <p>Manage all users</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Settings Button -->
+                <a href="#" class="dashboard-card card-animation">
+                    <div class="card-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Settings</h3>
+                    <p>System configuration</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+
+                <!-- Logout Button -->
+                <a href="/logout" class="dashboard-card card-animation logout-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                    <h3>Logout</h3>
+                    <p>Exit admin panel</p>
+                    <div class="card-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+        </main>
+
+        <footer class="admin-footer">
+            <p><i class="far fa-copyright"></i> 2023 Admin Panel | <i class="fas fa-lock"></i> Secure Access</p>
+        </footer>
+    </div>
+</body>
+</html>

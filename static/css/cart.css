@@ -1,0 +1,264 @@
+/* General Styling */
+body {
+    background: #FCEEDB; /* Vanilla Cream */
+    color: #6B4226; /* Chocolate Brown */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.wrapper {
+    flex: 1;
+    padding-bottom: 20px;
+}
+
+/* Header Styling */
+.header {
+    background: linear-gradient(90deg, #FF6B81, #98D8AA); /* Strawberry to Mint */
+    padding: 15px 0;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header .logo h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #6B4226; /* Chocolate */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo p {
+    font-size: 1rem;
+    color: #FCEEDB; /* Vanilla */
+}
+
+.header i {
+    margin-right: 8px;
+}
+
+/* Navbar */
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 12px;
+    transition: all 0.3s ease-in-out;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.navbar-links a:hover {
+    color: #00C9A7; /* Vibrant Turquoise */
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.navbar-links a i {
+    transition: transform 0.3s ease;
+}
+
+.navbar-links a:hover i {
+    transform: scale(1.2);
+}
+
+/* Table Styling */
+.table {
+    background: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.table:hover {
+    transform: translateY(-5px);
+}
+
+.table thead {
+    background: #FF6B81; /* Strawberry */
+    color: white;
+}
+
+.table th i {
+    margin-right: 8px;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: #FFDDC1; /* Light Peach */
+    transform: scale(1.01);
+}
+
+.table tbody td {
+    vertical-align: middle;
+}
+
+/* Quantity Control */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background: #FF6B81;
+    color: white;
+}
+
+.quantity {
+    margin: 0 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Delete Button */
+.btn-danger {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    background: #6B4226; /* Chocolate */
+    color: white;
+    border: none;
+    transition: all 0.3s;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-danger:hover {
+    background-color: #8B5A2B; /* Darker Chocolate */
+    transform: scale(1.05);
+}
+
+.btn-danger i {
+    margin-right: 5px;
+}
+
+/* Checkout Button */
+.checkout .btn {
+    background: linear-gradient(90deg, #00C9A7, #FF6B81); /* Turquoise to Strawberry */
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border-radius: 6px;
+    transition: all 0.3s, transform 0.2s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.checkout .btn:hover {
+    background: linear-gradient(90deg, #FF6B81, #00C9A7);
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.checkout .btn i {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.checkout .btn:hover i {
+    transform: rotate(360deg);
+}
+
+/* Footer Styling */
+.footer {
+    background: linear-gradient(90deg, #98D8AA, #5A7BB0); /* Mint to Blueberry */
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer i {
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        text-align: center;
+    }
+
+    .navbar-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .navbar-links a {
+        margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+    
+    .table th i {
+        display: none;
+    }
+}
+
+/* Custom Animations */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Confetti container */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}

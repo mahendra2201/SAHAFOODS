@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/order.css') }}">
+</head>
+<body>
+    <header class="order-header">
+        <nav class="container">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/menu?username={{name}}">
+                        <i class="fas fa-utensils"></i> Menu
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/drinks_and_icecreams?username={{ name }}">
+                        <i class="fas fa-glass-martini-alt"></i> Drinks
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cartpage?username={{ name }}">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="order-main container">
+        <div class="welcome-message text-center">
+            <h1><i class="fas fa-history"></i> Your Order History, {{ name }}!</h1>
+        </div>
+
+        {% if grouped_orders %}
+            {% for day, orders in grouped_orders.items() %}
+            <div class="day-table">
+                <h2 class="day-header">
+                    <i class="far fa-calendar-alt"></i> {{ day }}
+                </h2>
+                <div class="table-responsive">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-user"></i> Username</th>
+                                <th><i class="fas fa-hamburger"></i> Food Item</th>
+                                <th><i class="fas fa-sort-amount-up"></i> Quantity</th>
+                                <th><i class="fas fa-tag"></i> Price</th>
+                                <th><i class="fas fa-calculator"></i> Subtotal</th>
+                                <th><i class="far fa-clock"></i> Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{ order[0] }}</td>
+                                <td>{{ order[1] }}</td>
+                                <td>{{ order[2] }}</td>
+                                <td>₹{{ order[3] }}</td>
+                                <td>₹{{ order[4] }}</td>
+                                <td>{{ order[5].strftime('%H:%M:%S') if order[5] else '' }}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr class="total-row">
+                                <td colspan="4"></td>
+                                <td><strong>Total: ₹{{ daily_totals[day] }}</strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-orders">
+                <i class="fas fa-info-circle"></i>
+                <h3>No orders found!</h3>
+                <p>You haven't placed any orders yet.</p>
+                <a href="/menu?username={{name}}" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> Browse Menu
+                </a>
+            </div>
+        {% endif %}
+    </main>
+
+    <footer class="order-footer">
+        <p>© 2023 Food Ordering System. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/order.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.admin-header {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.header-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-icon {
+    color: #ffd700;
+    font-size: 1.5rem;
+}
+
+.admin-greeting {
+    font-weight: 300;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #6e8efb;
+}
+
+.dashboard-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.dashboard-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-arrow {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    color: #a777e3;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover .card-arrow {
+    transform: translateX(5px);
+}
+
+/* Special card for logout */
+.logout-card {
+    border: 1px solid #ff6b6b;
+}
+
+.logout-card .card-icon {
+    color: #ff6b6b;
+}
+
+.logout-card:hover {
+    background-color: #fff0f0;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.card-animation {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animations for each card */
+.dashboard-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.dashboard-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.dashboard-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.dashboard-card:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.dashboard-card:nth-child(5) {
+    animation-delay: 1.0s;
+}
+
+.dashboard-card:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+/* Footer Styles */
+.admin-footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-header h1 {
+        font-size: 1.8rem;
+    }
+}

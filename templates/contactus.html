@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Saha Foods</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contactus.css') }}">
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand animate__animated animate__bounce">
+                <a href="/">Saha Foods</a>
+            </div>
+            <div class="nav-links">
+                <a href="/aboutus" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="/policies" class="nav-link"><i class="fas fa-file-alt"></i> Our Policies</a>
+                <a href="/FAQS" class="nav-link"><i class="fas fa-question-circle"></i> FAQs</a>
+                <a href="/home" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+        </nav>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-header animate__animated animate__fadeInDown">
+                    <h2>Contact Us</h2>
+                    <p>We are here to serve you with the best food experience. Have questions, feedback, or special requests? Reach out to us!</p>
+                </div>
+
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/mjkkpego" method="post" class="contact-form animate__animated animate__fadeInUp">
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="Your email address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-with-icon">
+                                <i class="fas fa-comment"></i>
+                                <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <span class="btn-text">Send Message</span>
+                            <i class="fas fa-paper-plane btn-icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Saha Foods. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Add animation to form elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const formGroups = document.querySelectorAll('.form-group');
+
+            formGroups.forEach((group, index) => {
+                setTimeout(() => {
+                    group.style.opacity = '1';
+                    group.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+        });
+    </script>
+</body>
+</html>

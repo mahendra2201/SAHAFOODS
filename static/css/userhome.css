@@ -1,0 +1,229 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fffbe7; /* Light Banana Yellow */
+    color: #000; /* Black Text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #ff4d6d, #ff9f1c); /* Strawberry to Mango Gradient */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000; /* Black Text */
+    margin: 0;
+}
+
+/* Navbar */
+.nav-item .nav-link {
+    color: black !important; /* Black Text */
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.nav-item .nav-link:hover {
+    color: #ffcc29 !important; /* Pineapple Yellow */
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+section.py-5 {
+    background: linear-gradient(135deg, #ff9f1c, #ff4d6d); /* Mango to Strawberry */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+section.py-5 h1 {
+    font-size: 2.5rem;
+    color: #000; /* Black Text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+section.py-5 p {
+    color: #000; /* Black Text */
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Features Section */
+.row.text-center {
+    margin: 0 -10px;
+}
+
+.col-12.col-sm-6.col-lg-4 {
+    padding: 10px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffe5b4; /* Peach */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #000; /* Black Text */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #000; /* Black Text */
+    font-size: 1rem;
+}
+
+/* Buttons */
+.btn-success {
+    background: linear-gradient(135deg, #ffcc29, #ff4d6d); /* Pineapple to Strawberry */
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black; /* Black Text */
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #ff4d6d, #ffcc29);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #7b2cbf, #5a189a); /* Grape to Plum */
+    color: black; /* Black Text */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #ffcc29; /* Pineapple Yellow */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff9f1c; /* Mango */
+    text-decoration: underline;
+}
+
+/* Hyperlinks Container */
+.hyperlinks-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between links */
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #ffe5b4; /* Peach */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual Hyperlink Items */
+.hyperlink-item {
+    color: #000; /* Black Text */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #ffcc29; /* Pineapple Yellow */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.hyperlink-item:hover {
+    background-color: #ff4d6d; /* Strawberry */
+    color: #fff; /* White Text */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Link Style */
+.hyperlink-item.active {
+    background-color: #ff4d6d; /* Strawberry */
+    color: #fff; /* White Text */
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    section.py-5 h1 {
+        font-size: 2rem;
+    }
+
+    section.py-5 p {
+        font-size: 1rem;
+    }
+
+    .btn-success {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    .hyperlinks-container {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .hyperlink-item {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hyperlinks-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hyperlink-item {
+        width: 80%;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+}

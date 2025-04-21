@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Saha Foods</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutus.css') }}">
+</head>
+<body>
+    <!-- Background Overlay -->
+    <div class="background-overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="/">Saha Foods</a>
+            </div>
+            <div class="nav-links">
+                <a href="/home" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/contactus" class="nav-link"><i class="fas fa-envelope"></i> Contact Us</a>
+                <a href="/policies" class="nav-link"><i class="fas fa-file-alt"></i> Our Policies</a>
+                <a href="/FAQS" class="nav-link"><i class="fas fa-question-circle"></i> FAQs</a>
+                <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+        </nav>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="about-container">
+                <h2 class="section-title animate__animated animate__fadeInDown">About Us</h2>
+                <div class="about-content">
+                    <p class="animate__animated animate__fadeInUp">
+                        At <span class="highlight">Saha Foods</span>, we believe in bringing families and friends together through the love of delicious, authentic, and high-quality food. Established in 2023, our restaurant has quickly become a favorite dining spot for those who crave a mix of traditional flavors and modern culinary techniques.
+                    </p>
+                    <p class="animate__animated animate__fadeInUp">
+                        Our mission is to deliver exceptional food experiences by combining fresh, locally sourced ingredients with a passion for cooking. From our cozy ambiance to our friendly staff, we strive to make every visit a memorable one for our guests.
+                    </p>
+                </div>
+
+                <h2 class="section-title animate__animated animate__fadeInDown">Our Specialty</h2>
+                <div class="specialty-content animate__animated animate__fadeInUp">
+                    <p>
+                        At Saha Foods, we take pride in our wide variety of dishes, ranging from savory appetizers and mouth-watering entrees to delectable desserts. Whether you're in the mood for classic recipes or innovative creations, we promise to tantalize your taste buds and leave you coming back for more.
+                    </p>
+                </div>
+
+                <!-- Meet Our Team -->
+                <h2 class="section-title animate__animated animate__fadeInDown">Meet Our Team</h2>
+                <div class="team">
+                    <div class="team-member animate__animated animate__fadeInUp">
+                        <div class="team-img-container">
+                            <img src="{{ url_for('static', filename='images/chef1.jpg') }}" alt="John Doe - Head Chef">
+                            <div class="img-overlay"></div>
+                        </div>
+                        <h3>John Doe</h3>
+                        <p class="position">Head Chef</p>
+                        <p class="bio">John brings over 15 years of culinary experience, crafting each dish with expertise and love.</p>
+                    </div>
+                    <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                        <div class="team-img-container">
+                            <img src="{{ url_for('static', filename='images/chef2.jpg') }}" alt="Jane Smith - Restaurant Manager">
+                            <div class="img-overlay"></div>
+                        </div>
+                        <h3>Jane Smith</h3>
+                        <p class="position">Restaurant Manager</p>
+                        <p class="bio">Jane ensures every guest has a delightful experience at Saha Foods.</p>
+                    </div>
+                    <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                        <div class="team-img-container">
+                            <img src="{{ url_for('static', filename='images/chef3.jpg') }}" alt="Emily Brown - Pastry Chef">
+                            <div class="img-overlay"></div>
+                        </div>
+                        <h3>Emily Brown</h3>
+                        <p class="position">Pastry Chef</p>
+                        <p class="bio">Emily's desserts are the perfect sweet ending to your meal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Saha Foods. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Animation trigger on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

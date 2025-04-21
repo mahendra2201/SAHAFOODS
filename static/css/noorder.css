@@ -1,0 +1,87 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333333;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #444444;
+    margin-bottom: 1rem;
+}
+
+.message {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #666666;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-button, .menu-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button {
+    background-color: #4caf50;
+}
+
+.menu-button {
+    background-color: #007bff;
+}
+
+.home-button:hover {
+    background-color: #388e3c;
+    transform: translateY(-3px);
+}
+
+.menu-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.home-button:active, .menu-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .home-button, .menu-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

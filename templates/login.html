@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Saha Foods</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Image Overlay with Parallax Effect -->
+    <div class="background-overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Main Heading -->
+        <header class="header">
+            <h1>Welcome to Saha Foods</h1>
+            <p class="tagline">Authentic Flavors, Unforgettable Experiences</p>
+        </header>
+
+        <!-- Navigation Links -->
+        <nav class="navbar">
+            <a href="/aboutus" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="/contactus" class="nav-link"><i class="fas fa-envelope"></i> Contact Us</a>
+            <a href="/policies" class="nav-link"><i class="fas fa-file-alt"></i> Our Policies</a>
+            <a href="/FAQS" class="nav-link"><i class="fas fa-question-circle"></i> FAQs</a>
+        </nav>
+
+        <!-- Login Section -->
+        <div class="login-container">
+            <div class="login-card">
+                <div class="card-header">
+                    <h2 class="login-heading">Login</h2>
+                    <div class="food-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                </div>
+                <form action="/userlogin" method="POST" class="login-form">
+                    <div class="input-group">
+                        <label for="login-username">Username</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="login-username" name="username" placeholder="Enter username" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-password" name="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <span class="btn-text">Login</span>
+                        <i class="fas fa-arrow-right btn-icon"></i>
+                    </button>
+                </form>
+
+                <div class="additional-links">
+                    <p class="register-link">New user? <a href="/register">Create an account</a></p>
+                    <p class="forgot-password"><a href="/forgotpassword">Forgot Password?</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Saha Foods. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript for enhanced interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add ripple effect to login button
+            const loginBtn = document.querySelector('.btn-login');
+            
+            if(loginBtn) {
+                loginBtn.addEventListener('click', function(e) {
+                    // Remove any existing ripples
+                    const existingRipples = document.querySelectorAll('.ripple');
+                    existingRipples.forEach(ripple => ripple.remove());
+                    
+                    // Create new ripple
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    
+                    // Position the ripple
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+                    ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+                    
+                    this.appendChild(ripple);
+                    
+                    // Remove ripple after animation
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            }
+            
+            // Add loading state to form submission
+            const loginForm = document.querySelector('.login-form');
+            if(loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    const submitBtn = this.querySelector('.btn-login');
+                    if(submitBtn) {
+                        submitBtn.classList.add('loading');
+                        submitBtn.disabled = true;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

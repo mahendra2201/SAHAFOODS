@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Ecart.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome {{ name }}</h1>
+        <div class="cart-message">
+            <p>Your cart is empty. Let's add some delicious items!</p>
+        </div>
+        <a href="/menu?username={{ name }}" class="menu-button">Go to Menu</a>
+        <a href="/userhome?username={{name}}" class="home-button">Home</a>
+    </div>
+</body>
+</html>

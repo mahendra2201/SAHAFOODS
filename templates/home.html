@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Saha Foods</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<body>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="/login" class="nav-button login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            <a href="/register" class="nav-button register-btn">
+                <i class="fas fa-user-plus"></i> Register
+            </a>
+        </div>
+
+        <!-- Admin Header -->
+        <header class="header">
+            <h1><i class="fas fa-lock"></i> Admin Portal</h1>
+            <p class="tagline">Saha Foods Management System</p>
+        </header>
+
+        <!-- Login Section -->
+        <div class="login-container">
+            <div class="login-card">
+                <div class="card-header">
+                    <h2 class="login-heading">Admin Authentication</h2>
+                    <div class="admin-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+                <form action="/adminlogin" method="POST" class="login-form">
+                    <div class="input-group">
+                        <label for="admin-username"><i class="fas fa-user-cog"></i> Admin ID</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" id="admin-username" name="username" placeholder="Enter admin ID" required autocomplete="username">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="admin-password"><i class="fas fa-key"></i> Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="admin-password" name="password" placeholder="Enter password" required autocomplete="current-password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <span class="btn-text">Authenticate</span>
+                        <i class="fas fa-sign-in-alt btn-icon"></i>
+                    </button>
+                </form>
+
+                <div class="admin-links">
+                    <p class="system-status"><i class="fas fa-server"></i> System Status: <span class="status-active">Active</span></p>
+                    <p class="emergency-access"><a href="/emergencyaccess"><i class="fas fa-exclamation-triangle"></i> Emergency Access</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Footer -->
+        <footer class="footer">
+            <p><i class="fas fa-copyright"></i> 2024 Saha Foods Admin System | <span id="current-date"></span></p>
+            <div class="security-badges">
+                <span class="badge"><i class="fas fa-lock"></i> 256-bit Encryption</span>
+                <span class="fas fa-shield-alt"></i> PCI DSS Compliant</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date
+            const dateElement = document.getElementById('current-date');
+            if(dateElement) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                dateElement.textContent = new Date().toLocaleDateString('en-US', options);
+            }
+        });
+    </script>
+</body>
+</html>

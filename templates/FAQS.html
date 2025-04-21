@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Saha Foods</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/FAQS.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="py-4">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="logo mx-auto">
+                    <h1 class="text-center animate__animated animate__fadeInDown">Welcome to Saha Foods</h1>
+                </div>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/aboutus"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/policies"><i class="fas fa-file-alt"></i> Our Policies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 animate__animated animate__fadeIn">Frequently Asked Questions</h1>
+
+        <div class="row">
+            <!-- FAQ 1 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInLeft">
+                <div class="card">
+                    <div class="card-header" id="faqHeading1">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                1. What are your restaurant's opening hours?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq1" class="collapse show" aria-labelledby="faqHeading1">
+                        <div class="card-body">
+                            We are open from 9:00 AM to 10:00 PM from Monday to Sunday.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInRight">
+                <div class="card">
+                    <div class="card-header" id="faqHeading2">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                2. Do you offer vegetarian or vegan options?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq2" class="collapse" aria-labelledby="faqHeading2">
+                        <div class="card-body">
+                            Yes, we offer a variety of vegetarian and vegan dishes on our menu. Check out the "Healthy Choices" section.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInLeft">
+                <div class="card">
+                    <div class="card-header" id="faqHeading3">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                3. Can I make a reservation?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq3" class="collapse" aria-labelledby="faqHeading3">
+                        <div class="card-body">
+                            Yes, you can make reservations by calling us at (123) 456-7890 or through our online reservation system.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInRight">
+                <div class="card">
+                    <div class="card-header" id="faqHeading4">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                4. Do you provide home delivery services?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq4" class="collapse" aria-labelledby="faqHeading4">
+                        <div class="card-body">
+                            Yes, we provide home delivery services within a 10-mile radius. You can place your order online or via our app.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInLeft">
+                <div class="card">
+                    <div class="card-header" id="faqHeading5">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                5. Do you accommodate food allergies?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq5" class="collapse" aria-labelledby="faqHeading5">
+                        <div class="card-body">
+                            Absolutely. Please inform us of any food allergies when placing your order, and we will ensure your meal is prepared safely.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInRight">
+                <div class="card">
+                    <div class="card-header" id="faqHeading6">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                6. Do you have parking facilities?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq6" class="collapse" aria-labelledby="faqHeading6">
+                        <div class="card-body">
+                            Yes, we have ample parking space for our customers, including accessible parking spots.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="faq mb-3 col-12 animate__animated animate__fadeInLeft">
+                <div class="card">
+                    <div class="card-header" id="faqHeading7">
+                        <h3 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                                7. Do you host private events or parties?
+                            </button>
+                        </h3>
+                    </div>
+                    <div id="faq7" class="collapse" aria-labelledby="faqHeading7">
+                        <div class="card-body">
+                            Yes, we host private events and parties. Contact us to discuss your requirements and customize your event package.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="text-center mt-4 animate__animated animate__fadeInUp">
+            <a class="btn btn-primary btn-lg" href="/home">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JS for animations -->
+    <script>
+        // Add animation class when element comes into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqs = document.querySelectorAll('.faq');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated');
+                        if (entry.target.classList.contains('animate__fadeInLeft') || 
+                            entry.target.classList.contains('animate__fadeInRight')) {
+                            entry.target.style.opacity = 1;
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            faqs.forEach(faq => {
+                observer.observe(faq);
+            });
+            
+            // Add hover effect to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('shadow-lg');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('shadow-lg');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

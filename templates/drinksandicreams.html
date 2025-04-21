@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetarian Menu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/drinksandicecreams.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="py-3 bg-success text-white shadow">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <h1 class="h3 text-center mb-3 mb-md-0">WELCOME {{ name }}</h1>
+                <nav>
+                    <ul class="nav flex-column flex-md-row justify-content-center">
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light mx-1 mb-2 mb-md-0" href="/menu?username={{name}}">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light mx-1 mb-2 mb-md-0" href="/drinks_and_icecreams?username={{ name }}">Drinks & Icecreams</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light mx-1 mb-2 mb-md-0" href="/orders?username={{name}}">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light mx-1 mb-2 mb-md-0" href="/cartpage?username={{name}}">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-light mx-1 mb-2 mb-md-0" href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+
+        <!-- Grid Layout for Two Images per Row -->
+        <div class="row row-cols-1 row-cols-sm-2 g-4">
+            {% for item in items %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{ item.image_url }}" class="card-img-top img-fluid" alt="{{ item.name }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">{{ item.name }}</h5>
+                        <p class="card-text text-danger fw-bold">&#8377;{{ item.price }}</p>
+                        <form action="/add_to_cart?username={{ name }}" method="post" class="add-to-cart-form">
+                            <input type="hidden" name="fooditem" value="{{ item.name }}">
+                            <input type="hidden" name="price" value="{{ item.price }}">
+                            <div class="mb-3">
+                                <label for="quantity-{{ loop.index }}" class="form-label">Quantity:</label>
+                                <input type="number" id="quantity-{{ loop.index }}" name="quantity" min="1" max="10" value="1" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 add-to-cart-btn" data-item="{{ item.name }}">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
+            <a href="/terms" class="text-warning fw-bold">Terms & Conditions</a> |
+            <a href="/privacy" class="text-warning fw-bold">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Custom Alert -->
+    <div id="customAlert" class="custom-alert" style="display: none;">
+        <i class="fas fa-check-circle"></i> Item added to cart!
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    
+            const showAlert = (message, duration = 10000) => {
+                const alertBox = document.getElementById("customAlert");
+                if (!alertBox) return;
+    
+                alertBox.textContent = message;
+                alertBox.style.display = "block";
+    
+                setTimeout(() => {
+                    alertBox.style.display = "none";
+                }, duration);
+            };
+    
+            const setLoadingState = (button, isLoading, originalText, originalClass = "btn-success") => {
+                if (isLoading) {
+                    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+                    button.classList.remove(originalClass);
+                    button.classList.add("btn-secondary");
+                    button.disabled = true;
+                } else {
+                    button.innerHTML = originalText;
+                    button.classList.remove("btn-secondary");
+                    button.classList.add(originalClass);
+                    button.disabled = false;
+                }
+            };
+    
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", async (event) => {
+                    event.preventDefault();
+    
+                    const form = button.closest(".add-to-cart-form");
+                    const itemName = button.dataset.item || "Item";
+                    const originalText = button.innerHTML;
+    
+                    setLoadingState(button, true, originalText);
+    
+                    try {
+                        const response = await fetch(form.action, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            body: new URLSearchParams(new FormData(form)),
+                        });
+    
+                        if (!response.ok) {
+                            throw new Error(`Server Error (${response.status})`);
+                        }
+    
+                        const data = await response.json();
+    
+                        // Optionally check for a specific success condition in 'data'
+                        showAlert(`${itemName} added to cart!`);
+                    } catch (error) {
+                        console.error("Add to cart error:", error);
+                        alert(error.message || "An error occurred while adding the item to the cart.");
+                    } finally {
+                        setLoadingState(button, false, originalText);
+                    }
+                });
+            });
+        });
+    </script>
+    
+           
+</body>
+</html>

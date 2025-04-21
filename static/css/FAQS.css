@@ -1,0 +1,564 @@
+/* Import Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Color Variables */
+:root {
+    --emerald: #50C878;
+    --crimson: #DC143C;
+    --persian-pink: #F77FBE;
+    --dark-emerald: #3A9D5D;
+    --dark-crimson: #B01030;
+    --dark-persian-pink: #D56FA0;
+    --light-emerald: #E8F8F0;
+    --light-crimson: #FFE8EC;
+    --light-persian-pink: #FFF0F7;
+    --dark-bg: #1A1A1A;
+    --light-bg: #F8F9FA;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: overlay;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Animated background elements */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.9) 0%, rgba(220, 20, 60, 0.1) 100%);
+    z-index: -1;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(90deg, var(--emerald), var(--persian-pink));
+    padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--emerald), var(--crimson), var(--persian-pink));
+    animation: rainbowBorder 8s linear infinite;
+}
+
+@keyframes rainbowBorder {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+header h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--light-emerald);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+header h1:hover::after {
+    transform: scaleX(1);
+}
+
+/* Navigation Styles */
+.navbar-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin: 0 15px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--dark-bg) !important;
+    background-color: var(--light-emerald);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav .nav-link.active {
+    background-color: var(--crimson);
+    color: white !important;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--light-emerald);
+    border-radius: 30px;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* FAQ Card Styles */
+.faq .card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: rgba(255, 255, 255, 0.95);
+    overflow: hidden;
+}
+
+.faq .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.faq .card-header {
+    background-color: var(--emerald);
+    border-bottom: none;
+    padding: 20px;
+    position: relative;
+}
+
+.faq .card-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--emerald), var(--persian-pink));
+}
+
+.faq .card-header button {
+    color: var(--text-light);
+    font-weight: 600;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+.faq .card-header button::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f078";
+    transition: all 0.3s ease;
+}
+
+.faq .card-header button[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+.faq .card-header button:hover {
+    color: var(--light-emerald);
+}
+
+.faq .card-body {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 0 0 15px 15px;
+    position: relative;
+}
+
+.faq .card-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--emerald), var(--persian-pink));
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--emerald);
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-light);
+    box-shadow: 0 5px 15px rgba(80, 200, 120, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-emerald);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(80, 200, 120, 0.4);
+    color: var(--text-light);
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-danger {
+    background-color: var(--crimson);
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-light);
+    box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+}
+
+.btn-danger:hover {
+    background-color: var(--dark-crimson);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
+    color: var(--text-light);
+}
+
+.btn-pink {
+    background-color: var(--persian-pink);
+    border: none;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-light);
+    box-shadow: 0 5px 15px rgba(247, 127, 190, 0.3);
+}
+
+.btn-pink:hover {
+    background-color: var(--dark-persian-pink);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(247, 127, 190, 0.4);
+    color: var(--text-light);
+}
+
+/* Animations */
+.animate__animated {
+    animation-duration: 1s;
+}
+
+/* Pulse animation for cards */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.faq .card:hover {
+    animation: pulse 2s infinite;
+}
+
+/* Floating animation for header */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+header h1 {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Add icons to FAQ questions */
+.faq .card-header button::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+#faqHeading1 button::before { content: "\f017"; } /* clock */
+#faqHeading2 button::before { content: "\f06c"; } /* leaf */
+#faqHeading3 button::before { content: "\f274"; } /* calendar-check */
+#faqHeading4 button::before { content: "\f0d1"; } /* truck */
+#faqHeading5 button::before { content: "\f0f0"; } /* allergy */
+#faqHeading6 button::before { content: "\f540"; } /* parking */
+#faqHeading7 button::before { content: "\f0c0"; } /* users */
+
+/* Alert Styles */
+.alert-emerald {
+    background-color: var(--light-emerald);
+    color: var(--dark-emerald);
+    border-left: 5px solid var(--emerald);
+}
+
+.alert-crimson {
+    background-color: var(--light-crimson);
+    color: var(--dark-crimson);
+    border-left: 5px solid var(--crimson);
+}
+
+.alert-pink {
+    background-color: var(--light-persian-pink);
+    color: var(--dark-persian-pink);
+    border-left: 5px solid var(--persian-pink);
+}
+
+/* Section Styles */
+.section-emerald {
+    background-color: var(--light-emerald);
+    padding: 60px 0;
+}
+
+.section-crimson {
+    background-color: var(--light-crimson);
+    padding: 60px 0;
+}
+
+.section-pink {
+    background-color: var(--light-persian-pink);
+    padding: 60px 0;
+}
+
+/* Text Colors */
+.text-emerald {
+    color: var(--emerald);
+}
+
+.text-crimson {
+    color: var(--crimson);
+}
+
+.text-pink {
+    color: var(--persian-pink);
+}
+
+/* Background Colors */
+.bg-emerald {
+    background-color: var(--emerald);
+}
+
+.bg-crimson {
+    background-color: var(--crimson);
+}
+
+.bg-pink {
+    background-color: var(--persian-pink);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        margin: 5px 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 5px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .faq .card-header button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        margin: 3px;
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .btn-primary, .btn-danger, .btn-pink {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Special Elements */
+.highlight-emerald {
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-emerald::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--emerald);
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.highlight-emerald:hover::before {
+    height: 20px;
+    opacity: 0.5;
+}
+
+.highlight-crimson {
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-crimson::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--crimson);
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.highlight-crimson:hover::before {
+    height: 20px;
+    opacity: 0.5;
+}
+
+.highlight-pink {
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-pink::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: var(--persian-pink);
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.highlight-pink:hover::before {
+    height: 20px;
+    opacity: 0.5;
+}
+
+/* Gradient Text */
+.gradient-text-emerald-pink {
+    background: linear-gradient(45deg, var(--emerald), var(--persian-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-text-all {
+    background: linear-gradient(45deg, var(--emerald), var(--crimson), var(--persian-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--emerald), var(--persian-pink));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--dark-emerald), var(--dark-persian-pink));
+}

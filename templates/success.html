@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}">
+</head>
+<body>
+    <header class="header">
+        <h1>Welcome, {{ name }}</h1>
+    </header>
+    <main class="transaction-page success">
+        <div class="transaction-message">
+            <h1>Transaction Successful!</h1>
+            <p>Your payment has been processed successfully. Thank you for shopping with us!</p>
+            <div class="button-container">
+                <a href="/userhome?username={{ name }}" class="btn primary">Go to Home</a>
+                <a href="/orders?username={{ name }}" class="btn secondary">View Orders</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

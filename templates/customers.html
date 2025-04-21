@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Customers - Saha Foods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customers.css') }}">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <h1><i class="fas fa-users"></i> Registered Customers</h1>
+            <nav class="admin-nav">
+                <a href="/admin_dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="/products"><i class="fas fa-tachometer-alt"></i> Products</a>
+                <a href="/totalorders"><i class="fas fa-clipboard-list"></i> Orders</a>
+                <a href="/customers" class="active"><i class="fas fa-users"></i> Customers</a>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="customer-container">
+        <div class="customer-controls">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="customer-search" placeholder="Search customers...">
+            </div>
+            <div class="customer-count">
+                <span id="total-customers">{{ customers|length }}</span> Registered Customers
+            </div>
+        </div>
+
+        <div class="customer-table-container">
+            <table class="customer-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Registered Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.username }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.mobile }}</td>
+                        <td>{{ customer.registered_date.strftime('%Y-%m-%d') if customer.registered_date else 'N/A' }}</td>
+                        <td class="actions">
+                            <button class="btn-view" data-id="{{ customer.name }}"><i class="fas fa-eye"></i></button>
+                            <button class="btn-edit" data-id="{{ customer.name }}"><i class="fas fa-edit"></i></button>
+                            <button class="btn-delete" data-id="{{ customer.name }}"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="no-customers">No registered customers found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="admin-footer">
+        <p>&copy; 2024 Saha Foods Admin System. All rights reserved.</p>
+    </footer>
+
+    <!-- Customer Detail Modal -->
+    <div id="customer-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Customer Details</h2>
+            <div class="modal-body" id="customer-details">
+                <!-- Details will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/customers.js') }}"></script>
+</body>
+</html>
