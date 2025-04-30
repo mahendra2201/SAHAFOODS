@@ -16,10 +16,28 @@
                 <p>Welcome, {{ name }}</p>
             </div>
             <div class="navbar-links">
-                <a href="/menu?username={{ name }}">Menu</a>
-                <a href="/orders?username={{ name }}">Orders</a>
-                <a href="/drinks_and_icecreams?username={{ name }}">Drinks and Icecreams</a>
-                <a href="/logout">Logout</a>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/menu?username={{name}}">
+                            <i class="fas fa-utensils"></i> Menu
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/drinks_and_icecreams?username={{ name }}">
+                            <i class="fas fa-glass-martini-alt"></i> Drinks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cartpage?username={{ name }}">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>

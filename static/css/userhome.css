@@ -1,8 +1,25 @@
-/* General Styles */
+/* Food Ordering System - User Home CSS */
+:root {
+    --strawberry: #ff4d6d;
+    --mango: #ff9f1c;
+    --pineapple: #ffcc29;
+    --peach: #ffe5b4;
+    --grape: #7b2cbf;
+    --plum: #5a189a;
+    --banana: #fffbe7;
+    --black: #2d2d2d;
+    --white: #ffffff;
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 10px rgba(0,0,0,0.15);
+    --shadow-lg: 0 8px 20px rgba(0,0,0,0.2);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fffbe7; /* Light Banana Yellow */
-    color: #000; /* Black Text */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--banana);
+    color: var(--black);
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -10,114 +27,227 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #ff4d6d, #ff9f1c); /* Strawberry to Mango Gradient */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
+    background: linear-gradient(135deg, var(--strawberry), var(--mango));
+    box-shadow: var(--shadow-md);
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 25%);
 }
 
 header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000; /* Black Text */
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--black);
     margin: 0;
+    position: relative;
 }
 
-/* Navbar */
-.nav-item .nav-link {
-    color: black !important; /* Black Text */
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s;
+/* Navigation */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
-.nav-item .nav-link:hover {
-    color: #ffcc29 !important; /* Pineapple Yellow */
-    transform: scale(1.1);
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--black) !important;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px);
+}
+
+.nav-link:hover {
+    color: var(--pineapple) !important;
+    background-color: rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-link i {
+    font-size: 1.1rem;
 }
 
 /* Hero Section */
-section.py-5 {
-    background: linear-gradient(135deg, #ff9f1c, #ff4d6d); /* Mango to Strawberry */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 60px 20px;
+.hero-section {
+    background: linear-gradient(135deg, var(--mango), var(--strawberry));
+    box-shadow: var(--shadow-md);
+    border-radius: 12px;
+    padding: 4rem 2rem;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
 }
 
-section.py-5 h1 {
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.1)"><circle cx="20" cy="20" r="3"/><circle cx="50" cy="50" r="3"/><circle cx="80" cy="80" r="3"/></svg>');
+    background-size: 80px 80px;
+    opacity: 0.5;
+}
+
+.hero-section h1 {
     font-size: 2.5rem;
-    color: #000; /* Black Text */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    position: relative;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-section.py-5 p {
-    color: #000; /* Black Text */
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.hero-section p {
+    font-size: 1.25rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Features Section */
-.row.text-center {
-    margin: 0 -10px;
+.features-section {
+    margin: 3rem 0;
 }
 
-.col-12.col-sm-6.col-lg-4 {
-    padding: 10px;
-}
-
-.card {
+.feature-card {
     border: none;
-    border-radius: 10px;
-    background-color: #ffe5b4; /* Peach */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    background-color: var(--peach);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
     height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
 }
 
-.card-body {
-    padding: 20px;
+.feature-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mango), var(--strawberry));
 }
 
-.card-title {
+.feature-card .card-body {
+    padding: 2rem;
+}
+
+.feature-card .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.feature-card .card-title::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 1.5rem;
-    color: #000; /* Black Text */
-    margin-bottom: 10px;
+    color: var(--strawberry);
 }
 
-.card-text {
-    color: #000; /* Black Text */
+.feature-card:nth-child(1) .card-title::before {
+    content: "\f0d1"; /* Fast delivery icon */
+}
+
+.feature-card:nth-child(2) .card-title::before {
+    content: "\f2e7"; /* Quality food icon */
+}
+
+.feature-card:nth-child(3) .card-title::before {
+    content: "\f879"; /* Support icon */
+}
+
+.feature-card .card-text {
+    color: var(--black);
     font-size: 1rem;
 }
 
 /* Buttons */
-.btn-success {
-    background: linear-gradient(135deg, #ffcc29, #ff4d6d); /* Pineapple to Strawberry */
+.btn-explore {
+    background: linear-gradient(135deg, var(--pineapple), var(--strawberry));
     border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: black; /* Black Text */
-    border-radius: 8px;
-    transition: background 0.3s, transform 0.2s;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--black);
+    border-radius: 50px;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.btn-success:hover {
-    background: linear-gradient(135deg, #ff4d6d, #ffcc29);
-    transform: scale(1.05);
+.btn-explore:hover {
+    background: linear-gradient(135deg, var(--strawberry), var(--pineapple));
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    color: var(--black);
+}
+
+.btn-explore i {
+    font-size: 1.2rem;
 }
 
 /* Footer */
 footer {
-    background: linear-gradient(135deg, #7b2cbf, #5a189a); /* Grape to Plum */
-    color: black; /* Black Text */
-    padding: 20px 0;
+    background: linear-gradient(135deg, var(--grape), var(--plum));
+    color: var(--white);
+    padding: 2rem 0;
     text-align: center;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pineapple), var(--strawberry));
 }
 
 footer p {
@@ -125,105 +255,93 @@ footer p {
     font-size: 0.9rem;
 }
 
-footer a {
-    color: #ffcc29; /* Pineapple Yellow */
-    font-weight: bold;
-    transition: color 0.3s ease;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-footer a:hover {
-    color: #ff9f1c; /* Mango */
-    text-decoration: underline;
+.feature-card {
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
-/* Hyperlinks Container */
-.hyperlinks-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Space between links */
-    margin: 30px 0;
-    padding: 20px;
-    background-color: #ffe5b4; /* Peach */
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
 }
 
-/* Individual Hyperlink Items */
-.hyperlink-item {
-    color: #000; /* Black Text */
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background-color: #ffcc29; /* Pineapple Yellow */
-    transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s;
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.hyperlink-item:hover {
-    background-color: #ff4d6d; /* Strawberry */
-    color: #fff; /* White Text */
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Active Link Style */
-.hyperlink-item.active {
-    background-color: #ff4d6d; /* Strawberry */
-    color: #fff; /* White Text */
+.feature-card:nth-child(3) {
+    animation-delay: 0.3s;
 }
 
 /* Responsive Design */
-@media (max-width: 767px) {
-    .container {
-        padding-left: 15px;
-        padding-right: 15px;
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.2rem;
     }
+    
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card .card-body {
+        padding: 1.5rem;
+    }
+}
 
-    section.py-5 h1 {
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .hero-section h1 {
         font-size: 2rem;
     }
-
-    section.py-5 p {
-        font-size: 1rem;
-    }
-
-    .btn-success {
+    
+    .nav-link {
+        padding: 0.5rem 0.8rem;
         font-size: 0.9rem;
-        padding: 10px 20px;
-    }
-
-    .hyperlinks-container {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .hyperlink-item {
-        font-size: 16px;
-        padding: 8px 15px;
     }
 }
 
 @media (max-width: 576px) {
-    .hyperlinks-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+    .hero-section {
+        padding: 2rem 1rem;
+        border-radius: 8px;
     }
-
-    .hyperlink-item {
-        width: 80%;
-        text-align: center;
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
     }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.card {
-    animation: fadeIn 0.5s ease-in-out;
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .btn-explore {
+        padding: 0.6rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .feature-card .card-title {
+        font-size: 1.2rem;
+        padding-left: 2rem;
+    }
+    
+    .feature-card .card-title::before {
+        font-size: 1.2rem;
+    }
 }
