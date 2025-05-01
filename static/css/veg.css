@@ -341,31 +341,33 @@ footer a:hover {
     color: #ffcc80;
 }
 
-/* Custom Alert Styling */
+/* Alert Styling - Red (Error) */
 .custom-alert {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 15px 25px;
-    border-radius: 8px;
-    background-color: #8a4fff;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    animation: slideIn 0.5s ease-out;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    background-color: #f8d7da; /* light red background */
+    color: #721c24; /* dark red text */
+    font-weight: 500;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    opacity: 0;
-    transform: translateX(100%);
     display: flex;
     align-items: center;
+    gap: 1rem;
+    animation: slideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    opacity: 0;
+    transform: translateX(120%);
+    max-width: 350px;
 }
 
 .custom-alert::before {
-    content: "\f06c";
+    content: "\f058"; /* check-circle icon */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    margin-right: 10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #dc3545; /* vivid red icon */
 }
 
 @keyframes slideIn {

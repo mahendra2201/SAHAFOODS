@@ -566,34 +566,33 @@ footer a:hover {
         max-width: 25%;
     }
 }
-
-/* Custom Alert Styling */
+/* Alert Styling */
 .custom-alert {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 2rem;
+    right: 2rem;
     padding: 1rem 1.5rem;
-    border-radius: 10px;
-    background-color: var(--primary-dark);
-    color: var(--white);
-    font-weight: 600;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 12px;
+    background-color: #d4edda; /* light green background */
+    color: #155724; /* dark green text */
+    font-weight: 500;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* fallback shadow */
     z-index: 1000;
-    opacity: 0;
-    transform: translateX(120%);
     display: flex;
     align-items: center;
-    gap: 12px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 1rem;
+    animation: slideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    opacity: 0;
+    transform: translateX(120%);
+    max-width: 350px;
 }
 
 .custom-alert::before {
-    content: "\f058";
+    content: "\f058"; /* check-circle icon */
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    color: #28a745; /* green icon color */
 }
 
 @keyframes slideIn {
