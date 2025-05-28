@@ -1,0 +1,139 @@
+{
+    "info": {
+        "_postman_id": "12345678-abcd-1234-abcd-1234567890ab",
+        "name": "Flask Auth API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Registers",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\": \"Mahendra\", \"username\": \"mahendra123\", \"email\": \"test@example.com\", \"mobile\": \"9876543210\", \"password\": \"pass123\", \"confirm_password\": \"pass123\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/register",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:5000"
+                    ],
+                    "path": [
+                        "register"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Verify Email",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"email\": \"test@example.com\", \"otp\": \"123456\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/verifyemail",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:5000"
+                    ],
+                    "path": [
+                        "verifyemail"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "User Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"mahendra123\", \"password\": \"pass123\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/userlogin",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:5000"
+                    ],
+                    "path": [
+                        "userlogin"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Admin Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"admin\", \"password\": \"admin123\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/adminlogin",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:5000"
+                    ],
+                    "path": [
+                        "adminlogin"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Forgot Password",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"mahendra123\", \"email\": \"test@example.com\", \"new_password\": \"newpass123\", \"confirm_password\": \"newpass123\"}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/forgotpassword",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:5000"
+                    ],
+                    "path": [
+                        "forgotpassword"
+                    ]
+                }
+            }
+        }
+    ]
+}
