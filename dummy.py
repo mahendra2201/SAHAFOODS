@@ -9,7 +9,7 @@ import razorpay
 razorpay_key_id="rzp_test_9Tl8MfHxRWZu0z"
 razorpay_key_secret="Qo4MSyZgolQY998ptG1H7cmW"
 client=razorpay.Client(auth=(razorpay_key_id,razorpay_key_secret))
-from datetime import datetime
+from datetime import datetime,date
 
 verify_otp = "0"
 db = {
@@ -228,13 +228,21 @@ def admin_dashboard():
         # Get total orders count
         cursor.execute("SELECT COUNT(*) as total FROM orders")
         total_orders = cursor.fetchone()['total']
+
+        # Get total orders count of today
+        cursor.execute("SELECT COUNT(*) as total FROM orders WHERE DATE(dat_time) = %s", (date.today(),))
+        total_orders_today = cursor.fetchone()['total']
         
         # Get total revenue
         cursor.execute("SELECT SUM(total_price) as revenue FROM orders")
         total_revenue = cursor.fetchone()['revenue'] or 0
-        
+
+        # Get total revenue of today
+        cursor.execute("""SELECT SUM(total_price) as revenue FROM orders WHERE DATE(dat_time) = %s""", (date.today(),))
+        total_revenue_today = cursor.fetchone()['revenue'] or 0
+
         # Get unique customers
-        cursor.execute("SELECT COUNT(DISTINCT username) as customers FROM orders")
+        cursor.execute("SELECT COUNT(DISTINCT username) as customers FROM registers")
         total_customers = cursor.fetchone()['customers']
         
         # Get recent 5 orders
@@ -249,6 +257,8 @@ def admin_dashboard():
         return render_template("admin_dashboard.html",
             total_orders=total_orders,
             total_revenue=total_revenue,
+            total_revenue_today=total_revenue_today,
+            total_orders_today=total_orders_today,
             total_customers=total_customers,
             recent_orders=recent_orders
         )
