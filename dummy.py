@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, request, render_template,url_for,redirect,jsonify,session
 import pymysql
 import flash
 import random
@@ -6,10 +6,11 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import razorpay
+from datetime import datetime,date
 razorpay_key_id="rzp_test_9Tl8MfHxRWZu0z"
 razorpay_key_secret="Qo4MSyZgolQY998ptG1H7cmW"
 client=razorpay.Client(auth=(razorpay_key_id,razorpay_key_secret))
-from datetime import datetime,date
+from datetime import datetime
 
 verify_otp = "0"
 db = {
@@ -24,8 +25,8 @@ global vegitems
 global nonvegitems
 
 # Email configuration
-from_email = 'mannem.mahendra2407@gmail.com'
-email_password = 'dsju jftf aqnd wtje'
+from_email = 'mukeshkethe009@gmail.com'
+email_password = 'mioc lben qshh egog'
 
 # secret_key = '1234567890abcdef'
 
@@ -84,7 +85,7 @@ def registerdata():
             otp1 = random.randint(111111, 999999)
             global verify_otp
             verify_otp=str(otp1)
-            from_email = 'mannem.mahendra2407@gmail.com'
+            from_email = 'mukeshkethe009@gmail.com'
             to_email = email
             subject = 'OTP For Validation'
             body = f'OTP for Validation is {verify_otp}'
@@ -97,7 +98,7 @@ def registerdata():
 
             server = smtplib.SMTP('smtp.gmail.com', '587')
             server.starttls()
-            server.login('mannem.mahendra2407@gmail.com', 'dsju jftf aqnd wtje')
+            server.login('mukeshkethe009@gmail.com','mioc lben qshh egog')
             server.send_message(msg)
             server.quit()
 
@@ -272,7 +273,6 @@ def admin_dashboard():
     finally:
         if 'conn' in locals() and conn.open:
             conn.close()
-
 @app.route("/userhome", methods=["POST", "GET"])
 def userhome():
     user1=request.args.get('username')
@@ -1014,7 +1014,7 @@ def success():
 
         # Create and send email
         msg = MIMEMultipart('alternative')
-        msg['From'] = "Saha Foods <mannem.mahendra2407@gmail.com>"
+        msg['From'] = "Saha Foods <mukeshkethe009@gmail.com>"
         msg['To'] = email
         msg['Subject'] = f'Your Saha Foods Order #{order_id[:8]} - Confirmed'
 
@@ -1025,7 +1025,7 @@ def success():
         try:
             with smtplib.SMTP('smtp.gmail.com', 587) as server:
                 server.starttls()
-                server.login('mannem.mahendra2407@gmail.com', 'dsju jftf aqnd wtje')
+                server.login('mukeshkethe009@gmail.com', 'mioc lben qshh egog')
                 server.send_message(msg)
             print(f"Order confirmation email sent to {email}")
         except Exception as email_error:
