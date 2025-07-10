@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Menu Item</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/add_item.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Add Menu Item</h2>
+
+    <form action="/add_item" method="POST" class="form">
+      <label for="name">Item Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="price">Price:</label>
+      <input type="number" name="price" step="0.01" required>
+
+      <label for="image_url">Image URL:</label>
+      <input type="text" name="image_url" required>
+
+      <label for="category">Category:</label>
+      <select name="category" required>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="non-vegetarian">Non-Vegetarian</option>
+        <option value="drink">Drink</option>
+        <option value="icecream">Icecream</option>
+      </select>
+
+      <button type="submit">Add Item</button>
+    </form>
+  </div>
+
+  <!-- JavaScript for alert -->
+ 
+<div id="alertBox" class="alert" style="display: none;"></div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const message = params.get('msg');
+  const status = params.get('status');
+
+  if (message) {
+    const alertBox = document.getElementById('alertBox');
+    alertBox.textContent = message;
+    alertBox.className = `alert ${status === 'success' ? 'success' : 'error'}`;
+    alertBox.style.display = 'block';
+
+    // Remove query params after showing the message
+    window.history.replaceState(null, null, window.location.pathname);
+  }
+</script>
+
+</body>
+</html>

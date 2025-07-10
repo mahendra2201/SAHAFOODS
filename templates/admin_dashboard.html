@@ -21,6 +21,7 @@
           <li><a href="/totalorders"><i class="fas fa-clipboard-list"></i> Orders</a></li>
           <li><a href="/products"><i class="fas fa-box-open"></i> Products</a></li>
           <li><a href="/customers"><i class="fas fa-users"></i> Customers</a></li>
+          <li><a href="/food_item"><i class="fas fa-users"></i> Add Food Item</a></li>
           <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
       </nav>
@@ -54,17 +55,31 @@
           </div>
         </div>
         <div class="stat-card">
-          <i class="fas fa-rupee-sign icon"></i>
+          <i class="fas fa-wallet icon"></i>
           <div>
-            <h3>Total Revenue</h3>
+            <h3>Total Revenue </h3>
             <p>₹{{ total_revenue }}</p>
           </div>
         </div>
         <div class="stat-card">
-          <i class="fas fa-wallet icon"></i>
+          <i class="fas fa-rupee-sign icon"></i>
           <div>
-            <h3>Revenue Today</h3>
-            <p>₹{{ total_revenue_today }}</p>
+            <h3>Total Revenue Today</h3>
+            <p>{{ total_revenue_today }}</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-fire icon"></i>
+          <div>
+            <h3>Most Frequently Ordered Item</h3>
+            <p>{{  most_frequent_item }}</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-snowflake icon"></i>
+          <div>
+            <h3>Least Frequently Ordered Item</h3>
+            <p>{{ least_frequent_item }}</p>
           </div>
         </div>
         <div class="stat-card">
@@ -72,6 +87,13 @@
           <div>
             <h3>Total Customers</h3>
             <p>{{ total_customers }}</p>
+          </div>
+        </div>
+         <div class="stat-card">
+          <i class="fas fa-users icon"></i>
+          <div>
+            <h3>Customers Registered Today</h3>
+            <p>{{ customers_today }}</p>
           </div>
         </div>
       </div>

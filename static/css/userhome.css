@@ -1,4 +1,4 @@
-/* Food Ordering System - User Home CSS */
+/* Food Ordering System - User Home CSS
 :root {
     --strawberry: #ff4d6d;
     --mango: #ff9f1c;
@@ -16,7 +16,7 @@
 }
 
 /* Base Styles */
-body {
+/* body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--banana);
     color: var(--black);
@@ -344,4 +344,4 @@ footer p {
     .feature-card .card-title::before {
         font-size: 1.2rem;
     }
-}
+} 

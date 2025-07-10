@@ -42,6 +42,10 @@ def home():
 def login():
     return render_template("login.html")
 
+@app.route("/food_item")
+def food_item():
+    return render_template("add_item.html")
+
 @app.route("/register")
 def register():
     return render_template("register.html")
@@ -232,7 +236,6 @@ def admin_dashboard():
         # Get total orders count of today
         cursor.execute("SELECT COUNT(*) as total FROM orders WHERE DATE(dat_time) = %s", (date.today(),))
         total_orders_today = cursor.fetchone()['total']
-        
         # Get total revenue
         cursor.execute("SELECT SUM(total_price) as revenue FROM orders")
         total_revenue = cursor.fetchone()['revenue'] or 0
@@ -241,9 +244,22 @@ def admin_dashboard():
         cursor.execute("""SELECT SUM(total_price) as revenue FROM orders WHERE DATE(dat_time) = %s""", (date.today(),))
         total_revenue_today = cursor.fetchone()['revenue'] or 0
 
+        # very high frequently ordered item
+        cursor.execute("""SELECT fooditem, COUNT(*) AS order_count FROM orders GROUP BY fooditem ORDER BY order_count DESC LIMIT 1""")
+        most_frequent_item = cursor.fetchone()['fooditem'] or 0
+
+        # very low frequently ordered item
+        cursor.execute("""SELECT fooditem, COUNT(*) AS order_count FROM orders GROUP BY fooditem ORDER BY order_count ASC LIMIT 1""")
+        least_frequent_item = cursor.fetchone()['fooditem'] or None
+
         # Get unique customers
         cursor.execute("SELECT COUNT(DISTINCT username) as customers FROM registers")
         total_customers = cursor.fetchone()['customers']
+
+        # Get today's registered unique customers
+        cursor.execute("""SELECT COUNT(DISTINCT username) AS customers_today FROM registers WHERE DATE(dateAndTime) = %s""", (date.today(),))
+        customers_today = cursor.fetchone()['customers_today']
+        print("Customers registered today:", customers_today)
         
         # Get recent 5 orders
         cursor.execute("""
@@ -259,8 +275,12 @@ def admin_dashboard():
             total_revenue=total_revenue,
             total_revenue_today=total_revenue_today,
             total_orders_today=total_orders_today,
+            recent_orders=recent_orders,
+            most_frequent_item=most_frequent_item,
+            least_frequent_item=least_frequent_item,
             total_customers=total_customers,
-            recent_orders=recent_orders
+            customers_today=customers_today
+
         )
         
     except Exception as e:
@@ -1036,6 +1056,53 @@ def success():
         return render_template("failure.html", name=user1)
     else:
         return render_template("success.html", name=user1)
+    
+
+
+
+
+
+@app.route('/add_item', methods=['POST'])
+def add_item():
+    name = request.form['name']
+    price = request.form['price']
+    image_url = request.form['image_url']
+    category = request.form['category']
+
+    try:
+        conn = pymysql.connect(**db)
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO menu_items (name, price, image_url, category)
+                VALUES (%s, %s, %s, %s)
+            """, (name, price, image_url, category))
+
+            if category == 'vegetarian':
+                cursor.execute("""
+                    INSERT INTO vegetarian_items (name, price, image_url)
+                    VALUES (%s, %s, %s)
+                """, (name, price, image_url))
+
+            elif category == 'non-vegetarian':
+                cursor.execute("""
+                    INSERT INTO non_vegetarian_items (name, price, image_url)
+                    VALUES (%s, %s, %s)
+                """, (name, price, image_url))
+
+        conn.commit()
+        message = "Item added successfully"
+        status = "success"
+
+    except Exception as e:
+        print("❌ Error adding item:", str(e))
+        message = f"Error: {str(e)}"
+        status = "error"
+
+    finally:
+        conn.close()
+
+    return redirect(url_for('add_item', msg=message, status=status))
+
     
 if __name__ == "__main__":
     app.run()
